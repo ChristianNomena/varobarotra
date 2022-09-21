@@ -2,7 +2,7 @@
 A mobile app for buying foods
 
 # Installation
-yarn
+```yarn```
 
 # Run
-yarn start --tunnel
+```yarn start --tunnel```
