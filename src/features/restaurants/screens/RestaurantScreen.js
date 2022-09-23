@@ -6,14 +6,14 @@ import RestaurantInfo from "../components/RestaurantInfo";
 
 const SafeArea = styled.SafeAreaView`
   flex: 1;
-  padding-top: ${StatusBar.currentHeight}px;
+  ${StatusBar.currentHeight && `padding-top: ${StatusBar.currentHeight}px`};
 `;
 
-const SearchWrapper = styled(View)`
+const SearchContainer = styled(View)`
   padding: 16px;
 `;
 
-const RestaurantListWrapper = styled(View)`
+const RestaurantListContainer = styled(View)`
   flex: 1;
   padding: 16px;
 `;
@@ -25,16 +25,16 @@ const RestaurantScreen = () => {
 
   return (
     <SafeArea>
-      <SearchWrapper>
+      <SearchContainer>
         <Searchbar
           placeholder="Recherche"
           onChangeText={onChangeSearch}
           value={searchQuery}
         />
-      </SearchWrapper>
-      <RestaurantListWrapper>
+      </SearchContainer>
+      <RestaurantListContainer>
         <RestaurantInfo />
-      </RestaurantListWrapper>
+      </RestaurantListContainer>
     </SafeArea>
   );
 };
