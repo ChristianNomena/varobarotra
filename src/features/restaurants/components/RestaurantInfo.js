@@ -1,5 +1,10 @@
 import React from "react";
+import styled from "styled-components";
 import { Card } from "react-native-paper";
+
+const RestaurantCard = styled(Card)``;
+const RestaurantCardCover = styled(Card.Cover)``;
+const RestaurantCardTitle = styled(Card.Title)`y`;
 
 const RestaurantInfo = ({ restaurant = {} }) => {
   const {
@@ -15,10 +20,10 @@ const RestaurantInfo = ({ restaurant = {} }) => {
   } = restaurant;
 
   return (
-    <Card key={name}>
-      <Card.Cover source={photos} />
-      <Card.Title title={name} subtitle={address} />
-    </Card>
+    <RestaurantCard key={name}>
+      <RestaurantCardCover source={photos} />
+      <RestaurantCardTitle title={name} subtitle={address} />
+    </RestaurantCard>
   );
 };
 
