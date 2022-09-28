@@ -1,7 +1,24 @@
 export const fonts = {
-  body: "Raleway_400Regular",
-  heading: "Roboto_400Regular",
-  monospace: "Oswald_400Regular",
+  body: {
+    light: "Raleway_300Light",
+    regular: "Raleway_400Regular",
+    medium: "Raleway_500Medium",
+    semibold: "Raleway_600SemiBold",
+    bold: "Raleway_700Bold",
+  },
+  heading: {
+    light: "Roboto_300Light",
+    regular: "Roboto_400Regular",
+    medium: "Roboto_500Medium",
+    bold: "Roboto_700Bold",
+  },
+  monospace: {
+    light: "Oswald_300Light",
+    regular: "Oswald_400Regular",
+    medium: "Oswald_500Medium",
+    semibold: "Oswald_600SemiBold",
+    bold: "Oswald_700Bold",
+  },
 };
 
 export const fontWeights = {

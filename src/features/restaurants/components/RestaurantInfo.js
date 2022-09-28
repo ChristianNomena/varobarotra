@@ -1,56 +1,22 @@
 import React from "react";
-import { Text, View, Image } from "react-native";
-import { Card } from "react-native-paper";
+import { View } from "react-native";
 import { SvgXml } from "react-native-svg";
-import styled from "styled-components";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
 import Spacer from "../../../components/Spacer";
+import CustomText from "../../../components/CustomText";
 
-const RestaurantCard = styled(Card)``;
-const RestaurantCardCover = styled(Card.Cover)``;
-
-const CardTextContainer = styled(View)`
-  padding: ${(props) => props.theme.space.md};
-`;
-
-const Title = styled(Text)`
-  font-family: ${(props) => props.theme.fonts.heading};
-  font-size: ${(props) => props.theme.fontSizes.title};
-`;
-
-const Address = styled(Text)`
-  font-family: ${(props) => props.theme.fonts.body};
-  font-size: ${(props) => props.theme.fontSizes.caption};
-`;
-
-const RestaurantRightInfo = styled(View)`
-  align-items: flex-end;
-`;
-
-const Rating = styled(View)`
-  flex-direction: row;
-`;
-
-const Opening = styled(View)``;
-
-const Closed = styled(Text)`
-  color: red;
-`;
-
-const ContentWrapper = styled(View)`
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
-const OpeningWrapper = styled(View)`
-  flex-direction: row;
-`;
-
-const PlaceIcon = styled(Image)`
-  width: ${(props) => props.theme.fontSizes.body};
-  height: ${(props) => props.theme.fontSizes.body};
-`;
+import {
+  RestaurantCard,
+  RestaurantCardCover,
+  CardTextContainer,
+  ContentWrapper,
+  RestaurantRightInfo,
+  Rating,
+  OpeningWrapper,
+  Opening,
+  PlaceIcon,
+} from "./RestaurantInfoStyle";
 
 const RestaurantInfo = ({ restaurant = {} }) => {
   const {
@@ -73,20 +39,20 @@ const RestaurantInfo = ({ restaurant = {} }) => {
       <CardTextContainer>
         <ContentWrapper>
           <View>
-            <Title>{name}</Title>
+            <CustomText variant="label">{name}</CustomText>
             <Spacer />
-            <Address>{address}</Address>
+            <CustomText variant="subtitle">{address}</CustomText>
           </View>
           <RestaurantRightInfo>
-            <Spacer />
             <Rating>
               {ratingArray.map((_rating, index) => {
                 return <SvgXml key={index} width="20" height="20" xml={star} />;
               })}
             </Rating>
-            <Spacer />
             <OpeningWrapper>
-              {isClosedTemporarily && <Closed variant="label">Fermé</Closed>}
+              {isClosedTemporarily && (
+                <CustomText variant="error">Fermé</CustomText>
+              )}
               <Opening>
                 {isOpenNow && <SvgXml width="20" height="20" xml={open} />}
               </Opening>
