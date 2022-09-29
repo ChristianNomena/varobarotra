@@ -1,9 +1,14 @@
 import React from "react";
+import { View, Text } from "react-native";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { ThemeProvider } from "styled-components";
 import RestaurantScreen from "./src/features/restaurants/screens/RestaurantScreen";
 import { theme } from "./src/infrastructure/theme";
 import { useFonts } from "expo-font";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import SafeArea from "./src/components/SafeArea";
+
 import {
   Oswald_300Light,
   Oswald_400Regular,
@@ -24,6 +29,30 @@ import {
   Roboto_500Medium,
   Roboto_700Bold,
 } from "@expo-google-fonts/roboto";
+import {
+  optionsMap,
+  optionsRestaurants,
+  optionsSettings,
+  screenOptions,
+} from "./src/utils/BottomTabOptions";
+
+const Tab = createBottomTabNavigator();
+
+const MapScreen = () => {
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>Settings!</Text>
+    </View>
+  );
+};
+
+const SettingsScreen = () => {
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>Settings!</Text>
+    </View>
+  );
+};
 
 export default function App() {
   const [oswaldLoaded] = useFonts({
@@ -54,7 +83,27 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <RestaurantScreen />
+        <NavigationContainer>
+          <SafeArea>
+            <Tab.Navigator screenOptions={screenOptions}>
+              <Tab.Screen
+                name="Restaurants"
+                component={RestaurantScreen}
+                options={optionsRestaurants}
+              />
+              <Tab.Screen
+                name="Carte"
+                component={MapScreen}
+                options={optionsMap}
+              />
+              <Tab.Screen
+                name="Paramètres"
+                component={SettingsScreen}
+                options={optionsSettings}
+              />
+            </Tab.Navigator>
+          </SafeArea>
+        </NavigationContainer>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>

@@ -6,6 +6,7 @@ const sizeVariant = {
   small: "xs",
   medium: "sm",
   large: "md",
+  extra: "lg",
 };
 
 const positionVariant = {
