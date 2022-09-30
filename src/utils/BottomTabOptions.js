@@ -5,7 +5,6 @@ export const screenOptions = () => {
   return {
     tabBarStyle: { paddingBottom: 4 },
     tabBarActiveTintColor: "#E8880F",
-    title: "",
   };
 };
 

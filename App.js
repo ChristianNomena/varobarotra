@@ -8,6 +8,7 @@ import { useFonts } from "expo-font";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import SafeArea from "./src/components/SafeArea";
+import { RestaurantsContextProvider } from "./src/services/restaurants/RestaurantContext";
 
 import {
   Oswald_300Light,
@@ -41,7 +42,7 @@ const Tab = createBottomTabNavigator();
 const MapScreen = () => {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Settings!</Text>
+      <Text>Carte !</Text>
     </View>
   );
 };
@@ -49,7 +50,7 @@ const MapScreen = () => {
 const SettingsScreen = () => {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Settings!</Text>
+      <Text>Paramètres !</Text>
     </View>
   );
 };
@@ -83,27 +84,29 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <NavigationContainer>
-          <SafeArea>
-            <Tab.Navigator screenOptions={screenOptions}>
-              <Tab.Screen
-                name="Restaurants"
-                component={RestaurantScreen}
-                options={optionsRestaurants}
-              />
-              <Tab.Screen
-                name="Carte"
-                component={MapScreen}
-                options={optionsMap}
-              />
-              <Tab.Screen
-                name="Paramètres"
-                component={SettingsScreen}
-                options={optionsSettings}
-              />
-            </Tab.Navigator>
-          </SafeArea>
-        </NavigationContainer>
+        <RestaurantsContextProvider>
+          <NavigationContainer>
+            <SafeArea>
+              <Tab.Navigator screenOptions={screenOptions}>
+                <Tab.Screen
+                  name="Restaurants"
+                  component={RestaurantScreen}
+                  options={optionsRestaurants}
+                />
+                <Tab.Screen
+                  name="Carte"
+                  component={MapScreen}
+                  options={optionsMap}
+                />
+                <Tab.Screen
+                  name="Paramètres"
+                  component={SettingsScreen}
+                  options={optionsSettings}
+                />
+              </Tab.Navigator>
+            </SafeArea>
+          </NavigationContainer>
+        </RestaurantsContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
